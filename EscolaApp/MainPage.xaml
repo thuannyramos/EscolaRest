@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="EscolaApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EscolaApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Height="697" Width="1557">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot Title="Pivot">
+            <PivotItem Header="Escola">
+                <Grid>
+                    <TextBox x:Name="TBid" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Id" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TBnome" HorizontalAlignment="Left" Margin="79,0,0,0" TextWrapping="Wrap" Text="Nome" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TBuf" HorizontalAlignment="Left" Margin="148,0,0,0" TextWrapping="Wrap" Text="UF" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TBcn" HorizontalAlignment="Left" Margin="217,0,0,0" TextWrapping="Wrap" Text=" Natureza" VerticalAlignment="Top" Width="119" Height="32"/>
+                    <TextBox x:Name="TBch" HorizontalAlignment="Left" Margin="10,37,0,0" TextWrapping="Wrap" Text="Humanas" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TBlc" HorizontalAlignment="Left" Margin="98,37,0,0" TextWrapping="Wrap" Text="Linguagens" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TBmath" HorizontalAlignment="Left" Margin="200,37,0,0" TextWrapping="Wrap" Text="Matemática" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TBredacao" HorizontalAlignment="Left" Margin="10,74,0,0" TextWrapping="Wrap" Text="Redação" VerticalAlignment="Top"/>
+                    <Button x:Name="btnInserir" Content="Inserir" HorizontalAlignment="Left" Margin="98,74,0,0" VerticalAlignment="Top" Click="btnInserir_Click"/>
+                    <Button x:Name="btnAtualizar" Content="Atualizar" HorizontalAlignment="Left" Margin="164,74,0,0" VerticalAlignment="Top" Click="btnAtualizar_Click"/>
+                    <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="247,74,0,0" VerticalAlignment="Top" Click="btnExcluir_Click"/>
+                    <Button x:Name="btnListar" Content="Listar" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Click="btnListar_Click"/>
+                    <ListView x:Name="LV1" HorizontalAlignment="Left" Height="387" Margin="10,148,0,0" VerticalAlignment="Top" Width="1513"/>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Listas">
+                <Grid/>
+            </PivotItem>
+        </Pivot>
+
+    </Grid>
+</Page>
