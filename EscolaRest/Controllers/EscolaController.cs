@@ -31,8 +31,7 @@ namespace EscolaRest.Controllers
         // PUT api/fabricante/5
         public void Put(int id, [FromBody] string value)
         {
-            Models.Escola x = JsonConvert.DeserializeObject
-           <Models.Escola>(value);
+            Models.Escola x = JsonConvert.DeserializeObject<Models.Escola>(value);
             Models.EscolaDataContext dc = new Models.EscolaDataContext();
             Models.Escola fab = (from f in dc.Escolas
                                      where f.Id == id
@@ -57,6 +56,17 @@ namespace EscolaRest.Controllers
                                      select f).Single();
             dc.Escolas.DeleteOnSubmit(fab);
             dc.SubmitChanges();
+        }
+
+        [Route("API/GetEscUF/{UF:string}")]
+        [HttpGet]
+        public IEnumerable<Models.Escola> GetUF(string uf)
+        {
+
+            Models.EscolaDataContext dc = new Models.EscolaDataContext();
+            var r = from f in dc.Escolas where f.UF == uf select f;
+            return r.ToList();
+
         }
     }
     

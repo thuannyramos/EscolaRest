@@ -88,7 +88,17 @@ namespace EscolaApp
             var response = await httpClient.GetAsync("/api/escola");
             var str = response.Content.ReadAsStringAsync().Result;
             List<Models.Escola> obj = JsonConvert.DeserializeObject<List<Models.Escola>>(str);
-            LV1.ItemsSource = obj.ToList();
+            LV1.ItemsSource = obj.ToList().OrderBy(x => x.Nome);
+        }
+
+        private async void btnPesquisarUF_Click(object sender, RoutedEventArgs e)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(ip);
+            var response = await httpClient.GetAsync("API/GetEscUF/" + TbUFpesq.Text);
+            var str = response.Content.ReadAsStringAsync().Result;
+            List<Models.Escola> obj = JsonConvert.DeserializeObject<List<Models.Escola>>(str);
+            LV2.ItemsSource = obj.ToList().OrderBy(x => x.Nome);
         }
     }
 }
