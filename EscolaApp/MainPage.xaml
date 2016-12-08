@@ -33,6 +33,20 @@
                     <ListView x:Name="LV2" HorizontalAlignment="Left" Height="545" Margin="10,47,0,0" VerticalAlignment="Top" Width="1513"/>
                 </Grid>
             </PivotItem>
+            <PivotItem Header="Listagem por área">
+                <Grid>
+                    <Button x:Name="btnListarPorArea" Content="Pesquisar" HorizontalAlignment="Left" Margin="137,10,0,0" VerticalAlignment="Top" Width="90" Click="btnListarPorArea_Click"/>
+                    <ComboBox x:Name="CBarea" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" >
+                        <ComboBoxItem Content="Ciências Humanas"/>
+                        <ComboBoxItem Content="Ciências da Natureza"/>
+                        <ComboBoxItem Content="Linguagens "/>
+                        <ComboBoxItem Content="Matemática"/>
+                        <ComboBoxItem Content="Redação" />
+                        <ComboBoxItem Content="Média Geral" />
+                    </ComboBox>
+                    <ListView x:Name="LV3" HorizontalAlignment="Left" Height="545" Margin="10,47,0,0" VerticalAlignment="Top" Width="1513"/>
+                </Grid>
+            </PivotItem>
         </Pivot>
 
     </Grid>

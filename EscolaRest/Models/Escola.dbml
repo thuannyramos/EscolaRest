@@ -10,6 +10,7 @@
       <Column Name="LC" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Matematica" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Redacao" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Media" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

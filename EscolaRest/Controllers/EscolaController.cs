@@ -43,6 +43,7 @@ namespace EscolaRest.Controllers
             fab.LC = x.LC;
             fab.Matematica= x.Matematica;
             fab.Redacao = x.Redacao;
+            fab.Media = x.Media;
             dc.SubmitChanges();
         }
 

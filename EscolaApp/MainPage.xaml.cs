@@ -30,6 +30,12 @@ namespace EscolaApp
             this.InitializeComponent();
         }
         private string ip = "http://localhost:61563/";
+        private double CalMedia() {
+            double media = 0;
+            media = (double.Parse(TBcn.Text) + double.Parse(TBch.Text) + double.Parse(TBlc.Text) + double.Parse(TBmath.Text) + double.Parse(TBredacao.Text)) / 5;
+            return media;
+
+        }
         private async void btnInserir_Click(object sender, RoutedEventArgs e)
         {
             HttpClient httpClient = new HttpClient();
@@ -44,7 +50,8 @@ namespace EscolaApp
                 CH = double.Parse(TBch.Text),
                 LC = double.Parse(TBlc.Text),
                 Matematica = double.Parse(TBmath.Text),
-                Redacao = double.Parse(TBredacao.Text)
+                Redacao = double.Parse(TBredacao.Text),
+                Media = CalMedia(),
             };
             List<Models.Escola> fl = new List<Models.Escola>();
             fl.Add(f);
@@ -67,7 +74,8 @@ namespace EscolaApp
                 CH = double.Parse(TBch.Text),
                 LC = double.Parse(TBlc.Text),
                 Matematica = double.Parse(TBmath.Text),
-                Redacao = double.Parse(TBredacao.Text)
+                Redacao = double.Parse(TBredacao.Text),
+                Media = CalMedia(),
             };
             string s = "=" + JsonConvert.SerializeObject(f);
             var content = new StringContent(s, Encoding.UTF8, "application/x-www-form-urlencoded");
@@ -99,6 +107,45 @@ namespace EscolaApp
             var str = response.Content.ReadAsStringAsync().Result;
             List<Models.Escola> obj = JsonConvert.DeserializeObject<List<Models.Escola>>(str);
             LV2.ItemsSource = obj.ToList().OrderBy(x => x.Nome);
+        }
+
+        private async void btnListarPorArea_Click(object sender, RoutedEventArgs e)
+        {
+            var comboBoxItem = CBarea.Items[CBarea.SelectedIndex] as ComboBoxItem;
+            string selectedcmb = string.Empty;
+            if (comboBoxItem != null)
+            {
+               selectedcmb = comboBoxItem.Content.ToString();
+            }
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(ip);
+            var response = await httpClient.GetAsync("/api/escola");
+            var str = response.Content.ReadAsStringAsync().Result;
+            List<Models.Escola> obj = JsonConvert.DeserializeObject<List<Models.Escola>>(str);
+            if (selectedcmb == "Ciências Humanas")
+            {
+                LV3.ItemsSource = obj.ToList().OrderBy(x => x.CH);
+            }
+            if (selectedcmb == "Ciências da Natureza")
+            {
+                LV3.ItemsSource = obj.ToList().OrderBy(x => x.CN);
+            }
+            if (selectedcmb == "Linguagens")
+            {
+                LV3.ItemsSource = obj.ToList().OrderBy(x => x.LC);
+            }
+            if (selectedcmb == "Matemática")
+            {
+                LV3.ItemsSource = obj.ToList().OrderBy(x => x.Matematica);
+            }
+            if (selectedcmb == "Redação")
+            {
+                LV3.ItemsSource = obj.ToList().OrderBy(x => x.Redacao);
+            }
+            if (selectedcmb == "Média Geral")
+            {
+                LV3.ItemsSource = obj.ToList().OrderByDescending(x => x.Media);
+            }
         }
     }
 }

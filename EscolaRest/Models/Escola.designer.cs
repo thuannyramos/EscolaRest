@@ -96,6 +96,8 @@ namespace EscolaRest.Models
 		
 		private System.Nullable<double> _Redacao;
 		
+		private System.Nullable<double> _Media;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -116,6 +118,8 @@ namespace EscolaRest.Models
     partial void OnMatematicaChanged();
     partial void OnRedacaoChanging(System.Nullable<double> value);
     partial void OnRedacaoChanged();
+    partial void OnMediaChanging(System.Nullable<double> value);
+    partial void OnMediaChanged();
     #endregion
 		
 		public Escola()
@@ -279,6 +283,26 @@ namespace EscolaRest.Models
 					this._Redacao = value;
 					this.SendPropertyChanged("Redacao");
 					this.OnRedacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Media", DbType="Float")]
+		public System.Nullable<double> Media
+		{
+			get
+			{
+				return this._Media;
+			}
+			set
+			{
+				if ((this._Media != value))
+				{
+					this.OnMediaChanging(value);
+					this.SendPropertyChanging();
+					this._Media = value;
+					this.SendPropertyChanged("Media");
+					this.OnMediaChanged();
 				}
 			}
 		}
